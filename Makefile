@@ -8,11 +8,11 @@ SRC_PATH= src/
 TANK_PATH= tanks/
 LIB_PATH= libraries/
 
-TANKS = Gizmo/source/Gizmo.so
+TANKS = gizmo/source/Gizmo.so
 
-INCLUDE  := -IGizmo/include/ -Isrc/
+INCLUDE  := -Igizmo/include/ -Isrc/
 TANKS_LINK = src/Actor.o #need to link in the base class for the .so to have everything.
-TANKS_LINK += $(filter-out Gizmo/source/Gizmo.cpp, $(wildcard Gizmo/source/*.cpp))
+TANKS_LINK += $(filter-out gizmo/source/Gizmo.cpp, $(wildcard gizmo/source/*.cpp))
 
 %.so: %.cpp
 	$(CXX) $(CXXFLAGS) $(INCLUDE) -shared $< $(TANKS_LINK) -o $@ $(SOFLAGS) $(LIBS)
